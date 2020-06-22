@@ -144,18 +144,18 @@ def main():
             print("# of episode :{}, avg score : {:.1f}, buffer size : {}".format(n_epi, score/print_interval, memory.size()))
             score = 0.0
             
-        if n_epi%500==0 and n_epi!=0:
+        if n_epi%300==0 and n_epi!=0:
             # 모델의 state_dict 출력
             print("Model's state_dict:")
             for param_tensor in model.state_dict():
                 print(param_tensor, "\t", model.state_dict()[param_tensor].size())
-            torch.save(model.state_dict(), './output/model_' + str(time) + '.pth' )
+            torch.save(model.state_dict(), './output/model_' + str(time) + '_' + str(n_epi) + '.pth' )
 
             # 옵티마이저의 state_dict 출력
             print("Optimizer's state_dict:")
             for var_name in optimizer.state_dict():
                 print(var_name, "\t", optimizer.state_dict()[var_name])
-            torch.save(optimizer.state_dict(), './output/optimizer_' + str(time) + '.pth' )
+            torch.save(optimizer.state_dict(), './output/optimizer_' + str(time) + '_' + str(n_epi) + '.pth' )
             sleep(5)
           
 
